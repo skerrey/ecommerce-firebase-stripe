@@ -1,9 +1,9 @@
 // Description: Show cart products in modal
 
 import Button from "react-bootstrap/Button";
-import { CartContext } from "../CartContext";
+import { CartContext } from "../../contexts/CartContext";
 import { useContext } from "react";
-import { getProductData } from "../productStore";
+import { getProductData } from "../../productStore";
 
 function CartProduct(props) {
   const cart = useContext(CartContext);

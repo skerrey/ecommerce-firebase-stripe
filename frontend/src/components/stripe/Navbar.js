@@ -2,7 +2,7 @@
 
 import { Button, Navbar, Offcanvas } from "react-bootstrap";
 import { useState, useContext } from "react";
-import { CartContext } from "../CartContext";
+import { CartContext } from "../../contexts/CartContext";
 import CartProduct from "./CartProduct";
 
 function NavbarComponent() {

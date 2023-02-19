@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Container, Card, Button, Alert } from 'react-bootstrap';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {

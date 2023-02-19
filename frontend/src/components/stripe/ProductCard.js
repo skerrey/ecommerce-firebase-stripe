@@ -1,8 +1,8 @@
 // Description: Product card styling component
 
 import { Card, Button, Form, Row, Col } from "react-bootstrap";
-import { CartContext } from "../CartContext";
-import { useContext, useState, useEffect } from "react";
+import { CartContext } from "../../contexts/CartContext";
+import { useContext, useState } from "react";
 
 function ProductCard(props) { // props.product is the product we are selling
   const product = props.product;
@@ -11,14 +11,6 @@ function ProductCard(props) { // props.product is the product we are selling
   console.log(cart.items);
 
   const [show, setShow] = useState(false);
-
-  // useEffect(() => {
-  //   if (show) {
-  //     console.log("showing");
-  //   } else {
-  //     console.log("hiding");
-  //   }
-  // }, [show]); 
 
   return (
     <>
