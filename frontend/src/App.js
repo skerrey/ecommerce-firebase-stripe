@@ -23,7 +23,6 @@ function App() {
       <AuthProvider>
       <CartProvider>
         <Container>
-
           <Navbar />
           <Router>
           <LoginNav />
