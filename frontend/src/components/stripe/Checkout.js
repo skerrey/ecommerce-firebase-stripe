@@ -12,7 +12,7 @@ function Checkout() {
         const products = {};
         querySnapshot.forEach(async (productDoc) => {
           products[productDoc.id] = productDoc.data();
-          const priceSnap = await productDoc.ref.collection("prices").get();
+          const priceSnap = await productDoc.ref.collection("prices").get(); 
           priceSnap.docs.forEach((price) => {
             products[productDoc.id].prices = {
               priceId: price.id,
