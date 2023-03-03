@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import db from "../../firebase";
+import db from "../firebase";
 
-function Checkout() {
+function Checkout(collection) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ function Checkout() {
         const products = {};
         querySnapshot.forEach(async (productDoc) => {
           products[productDoc.id] = productDoc.data();
-          const priceSnap = await productDoc.ref.collection("prices").get(); 
+          const priceSnap = await productDoc.ref.collection("prices").get();
           priceSnap.docs.forEach((price) => {
             products[productDoc.id].prices = {
               priceId: price.id,
@@ -24,7 +24,7 @@ function Checkout() {
       });
   }, []);
   
-  console.log(products + "products")
+  console.log(products)
 
   return <div className="checkout"></div>;
 
