@@ -5,6 +5,8 @@ import { useState, useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import CartProduct from "./CartProduct";
 
+import ModalComponent from "./ModalComponent";
+
 function NavbarComponent() {
   const cart = useContext(CartContext);
 
@@ -56,7 +58,8 @@ function NavbarComponent() {
 
               <Button variant="success" onClick={checkout}>
                 Purchase Items
-                </Button>
+              </Button>
+              <ModalComponent />
             </>
             :
             <h1>There are no items in your cart</h1>
