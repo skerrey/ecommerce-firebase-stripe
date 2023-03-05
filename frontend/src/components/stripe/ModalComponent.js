@@ -14,11 +14,11 @@ function ModalComponent() {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
+    // Create PaymentIntent as soon as the modal loads
     fetch("http://localhost:4000/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: cart.items }),
+      body: JSON.stringify({ items: cart.getTotalCost() }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
