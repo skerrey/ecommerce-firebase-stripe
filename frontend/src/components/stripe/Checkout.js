@@ -1,33 +1,54 @@
-import { useEffect, useState } from "react";
-import db from "../firebase";
+import React, { useState, useEffect, useContext } from 'react';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import { CartContext } from "../../contexts/CartContext";
+import CartProduct from './CartProduct';
+import CheckoutForm from "./CheckoutForm";
 
-function Checkout(collection) {
-  const [products, setProducts] = useState([]);
+const stripePromise = loadStripe("pk_test_GKcjZ2vSJh0CsQIHg4FRDXuD00VJwUDHV3");
+
+function Checkout() {
+  const cart = useContext(CartContext);
+
+  const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    db.collection("products")
-      .where("active", "==", true)
-      .get()
-      .then((querySnapshot) => {
-        const products = {};
-        querySnapshot.forEach(async (productDoc) => {
-          products[productDoc.id] = productDoc.data();
-          const priceSnap = await productDoc.ref.collection("prices").get();
-          priceSnap.docs.forEach((price) => {
-            products[productDoc.id].prices = {
-              priceId: price.id,
-              priceData: price.data(),
-            };
-          });
-        });
-        setProducts(products);
-      });
+    // Create PaymentIntent as soon as the modal loads
+    fetch("http://localhost:4000/create-payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items: cart.getTotalCost() }),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
   }, []);
-  
-  console.log(products)
 
-  return <div className="checkout"></div>;
+  const appearance = {
+    theme: 'stripe',
+  };
+  const options = {
+    clientSecret,
+    appearance,
+  };
 
+  return (
+    <>
+      <div>
+        <p>Items in your cart:</p>
+        {cart.items.map((currentProduct, index) => (
+          <CartProduct key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
+        ))}
+        <h2>Total: ${cart.getTotalCost().toFixed(2)}</h2>
+      </div>
+      <div>
+        {clientSecret && (
+          <Elements options={options} stripe={stripePromise}>
+            <CheckoutForm />
+          </Elements>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default Checkout;
