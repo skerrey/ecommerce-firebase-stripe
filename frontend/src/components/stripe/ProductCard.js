@@ -32,6 +32,24 @@ function ProductCard(props) { // props.product is the product we are selling
     setClicked(false);
   }
 
+  function CardUp({ clicked }) { // When the mouse clicks the "Add to Cart" button, transition buttons
+    return (
+      <div key={clicked} className="card-up">
+        <Form as={Row}>
+          <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
+          <Col sm="6">
+            <Button sm="6" onClick={() => cart.addOneToCart(product.id)} className="mx-2">+</Button>
+            <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="mx-2">-</Button>
+          </Col>
+        </Form>
+        <Button variant="danger" className="" onClick={(e) => { 
+          cart.deleteFromCart(product.id); 
+          isClickedAgain(e);
+        }}>Delete</Button>
+      </div> 
+    )
+  }
+
   return (
     <>
       <Card className="card" style={{
@@ -49,26 +67,13 @@ function ProductCard(props) { // props.product is the product we are selling
 
             { // If the product is in the cart, display the quantity and buttons to add or remove one from the cart 
             show && (productQuantity > 0 ?
-              <div className="card-up">
-                <Form as={Row}>
-                  <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
-                  <Col sm="6">
-                    <Button sm="6" onClick={() => cart.addOneToCart(product.id)} className="mx-2">+</Button>
-                    <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="mx-2">-</Button>
-                  </Col>
-                </Form>
-                <Button variant="danger" className="" onClick={(e) => { 
-                  cart.deleteFromCart(product.id); 
-                  isClickedAgain(e);
-                }}>Delete</Button>
-              </div>
+              <CardUp />
               :
               <Button className="card-button-add-to-cart" onClick={(e) => {
                 cart.addOneToCart(product.id); 
                 isClicked(e);
               }}>Add To Cart</Button>
             )}
-
           </div>
 
         </Card.Body>
