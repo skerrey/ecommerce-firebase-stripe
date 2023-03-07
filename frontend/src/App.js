@@ -38,6 +38,7 @@ function App() {
               <Route path="/forgot-password" element={<ForgotPassword />} />
             </Routes>
           </Router>
+
         </Container>
       </CartProvider>
       </AuthProvider>
