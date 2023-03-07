@@ -3,6 +3,7 @@
 import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import { CartContext } from "../../contexts/CartContext";
 import { useContext, useState } from "react";
+import './ProductCard.css'
 
 function ProductCard(props) { // props.product is the product we are selling
   const product = props.product;
@@ -10,40 +11,45 @@ function ProductCard(props) { // props.product is the product we are selling
   const productQuantity = cart.getProductQuantity(product.id);
   console.log(cart.items);
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false); // Handles show upon mouse enter/leave
+  const [clicked, setClicked] = useState(false); // Handles button appearance when clicked
+
+  function onMouseEnter() { // When the mouse enters the card, show the button "Add to Cart"
+    setShow(true);
+  }
+
+  function onMouseLeave() { // When the mouse leaves the card, hide the button "Add to Cart"
+    if (clicked === true) {
+      setShow(true);
+    } else { setShow(false); }
+  }
+
+  function isClicked() { // When the mouse clicks the "Add to Cart" button, buttons remain visible
+    setClicked(true);
+  }
+
+  function isClickedAgain() { // When the mouse clicks the "Delete" button, buttons disappear
+    setClicked(false);
+  }
 
   return (
     <>
-      <Card style={{
-
-        height: "30rem",
+      <Card className="card" style={{
         backgroundImage: `url(${product.image})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
       }}
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}>
-        <Card.Body>
-          <div style={{
-            backgroundColor: "#fff",
-            width: "100%",
-            borderRadius: "10px",
-            opacity: "0.8",
-            zIndex: "1",
-          }}>
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}>
+        <Card.Body className="card-body">
+          <div className="card-title">
             <Card.Title>{product.title}</Card.Title>
             <Card.Text>${product.price}</Card.Text>
           </div>
 
-          <div style={{
-            position: "absolute",
-            bottom: "20px",
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}>
+          <div className="card-display">
+
             { // If the product is in the cart, display the quantity and buttons to add or remove one from the cart 
             show && (productQuantity > 0 ?
-              <>
+              <div className="card-up">
                 <Form as={Row}>
                   <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
                   <Col sm="6">
@@ -51,15 +57,23 @@ function ProductCard(props) { // props.product is the product we are selling
                     <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="mx-2">-</Button>
                   </Col>
                 </Form>
-                <Button variant="danger" className="my-2" onClick={() => cart.deleteFromCart(product.id)}>Delete</Button>
-              </>
+                <Button variant="danger" className="" onClick={(e) => { 
+                  cart.deleteFromCart(product.id); 
+                  isClickedAgain(e);
+                }}>Delete</Button>
+              </div>
               :
-              <Button variant="primary" className="my-2" onClick={() => cart.addOneToCart(product.id)}>Add To Cart</Button>
+              <Button className="card-button-add-to-cart" onClick={(e) => {
+                cart.addOneToCart(product.id); 
+                isClicked(e);
+              }}>Add To Cart</Button>
             )}
+
           </div>
 
         </Card.Body>
       </Card>    
+      
     </>
   )
 }
