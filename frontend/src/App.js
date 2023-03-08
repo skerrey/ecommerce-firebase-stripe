@@ -22,24 +22,24 @@ function App() {
     <>
       <AuthProvider>
       <CartProvider>
-        <Container>
 
           <Router>
             <Navigation />
-            <Routes>
-              <Route index element={<Store />} />
-              <Route path="success" element={<Success />} />
-              <Route path="cancel" element={<Cancel />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
-              <Route path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-            </Routes>
+            <Container>
+              <Routes>
+                <Route index element={<Store />} />
+                <Route path="success" element={<Success />} />
+                <Route path="cancel" element={<Cancel />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
+                <Route path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+              </Routes>
+            </Container>
           </Router>
 
-        </Container>
       </CartProvider>
       </AuthProvider>
     </>
