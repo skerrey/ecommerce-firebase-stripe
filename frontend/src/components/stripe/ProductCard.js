@@ -32,24 +32,6 @@ function ProductCard(props) { // props.product is the product we are selling
     setClicked(false);
   }
 
-  function CardUp({ clicked }) { // When the mouse clicks the "Add to Cart" button, transition buttons
-    return (
-      <div key={clicked} className="card-up">
-        <Form as={Row}>
-          <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
-          <Col sm="6">
-            <Button sm="6" onClick={() => cart.addOneToCart(product.id)} className="mx-2">+</Button>
-            <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="mx-2">-</Button>
-          </Col>
-        </Form>
-        <Button variant="danger" className="" onClick={(e) => { 
-          cart.deleteFromCart(product.id); 
-          isClickedAgain(e);
-        }}>Delete</Button>
-      </div> 
-    )
-  }
-
   return (
     <>
       <Card className="card" style={{
@@ -59,15 +41,30 @@ function ProductCard(props) { // props.product is the product we are selling
       onMouseLeave={onMouseLeave}>
         <Card.Body className="card-body">
           <div className="card-title">
-            <Card.Title>{product.title}</Card.Title>
-            <Card.Text>${product.price}</Card.Text>
+            <h5>{product.title}</h5>
+            <p>${product.price}</p>
           </div>
 
           <div className="card-display">
 
             { // If the product is in the cart, display the quantity and buttons to add or remove one from the cart 
             show && (productQuantity > 0 ?
-              <CardUp />
+              <div className="card-up" style={{ animation : isClicked ? "card-up ease-in-out 0.6s"
+              : isClickedAgain(true) ? "card-down ease-in-out 1s"
+              : "none" }}>
+                <p className="pt-2">Add to Cart</p>
+                <Form as={Row}>
+                  <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
+                  <Col sm="6">
+                    <Button sm="6" onClick={() => cart.addOneToCart(product.id)} className="mx-2">+</Button>
+                    <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="mx-2">-</Button>
+                  </Col>
+                </Form>
+                <Button variant="danger" className="" onClick={(e) => { 
+                  cart.deleteFromCart(product.id); 
+                  isClickedAgain(e);
+                }}>Delete</Button>
+              </div> 
               :
               <Button className="card-button-add-to-cart" onClick={(e) => {
                 cart.addOneToCart(product.id); 
