@@ -67,9 +67,9 @@ function ProductCard(props) { // props.product is the product we are selling
                     </Button>
                   </Col>
                   <Col sm="6" className="my-2">
-                    <Button variant="success">
+                    <a href="/checkout" className="btn btn-success">
                       Checkout <BsFillCartCheckFill />
-                    </Button>
+                    </a>
                   </Col>
                 </Row>
 
