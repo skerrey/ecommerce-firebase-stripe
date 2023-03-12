@@ -24,6 +24,7 @@ export default function Login() {
       navigate('/'); // navigate home after login
     } catch (e) {
       setError('Failed to sign in');
+      console.log(e);
     }
     setLoading(false);
   }
