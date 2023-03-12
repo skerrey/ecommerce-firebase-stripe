@@ -10,7 +10,7 @@ function ProductCard(props) { // props.product is the product we are selling
   const product = props.product;
   const cart = useContext(CartContext);
   const productQuantity = cart.getProductQuantity(product.id);
-  console.log(cart.items);
+
 
   const [show, setShow] = useState(false); // Handles show upon mouse enter/leave
   const [clicked, setClicked] = useState(false); // Handles button visibility when clicked
