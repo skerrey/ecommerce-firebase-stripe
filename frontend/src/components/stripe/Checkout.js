@@ -4,6 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { CartContext } from "../../contexts/CartContext";
 import CartProduct from './CartProduct';
 import CheckoutForm from "./CheckoutForm";
+import { Row, Col } from "react-bootstrap";
 
 const stripePromise = loadStripe("pk_test_GKcjZ2vSJh0CsQIHg4FRDXuD00VJwUDHV3");
 
@@ -33,13 +34,13 @@ function Checkout() {
 
   return (
     <>
-      <div>
-        <p>Items in your cart:</p>
+      <p>Items in your cart:</p>
+      <Row xs={1} md={3} className="g-0">
         {cart.items.map((currentProduct, index) => (
           <CartProduct key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
         ))}
         <h2>Total: ${cart.getTotalCost().toFixed(2)}</h2>
-      </div>
+      </Row>
       <div>
         {clientSecret && (
           <Elements options={options} stripe={stripePromise}>
