@@ -1,14 +1,18 @@
 // Description: Navigation component
 
-import React, { useState, useContext} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
 import { CartContext } from "../contexts/CartContext";
 import CartProduct from './stripe/CartProduct';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import logo from "../images/logo.svg";
+import "./Navigation.css"
 
+// Icons
 import { IoMdSettings } from "react-icons/io";
 import { FiShoppingCart } from 'react-icons/fi';
+import { BsFillCartCheckFill } from "react-icons/bs";
 
 export default function Navigation() {
 
@@ -42,8 +46,13 @@ export default function Navigation() {
   return (
     <>
       <Navbar bg="light" expand={expand}>
+        <div className="logo-box">
+          <img src={logo} alt="logo" className="logo-img" />
+        </div>
         <Container>
-          <Navbar.Brand href="/" style={{fontSize: "1.7em"}}>eCommerce Store App</Navbar.Brand>
+          <Navbar.Brand href="/" className="navbar-brand">
+            Coffee Hut
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" >
             <Nav className="ms-auto" align="end">
@@ -65,7 +74,7 @@ export default function Navigation() {
               <Button onClick={handleShow}><FiShoppingCart /> ({productsCount}) Items</Button>
 
               <Offcanvas show={show} onHide={handleClose} placement="end">
-                <Offcanvas.Header closeButton>
+                <Offcanvas.Header closeButton className="offcanvas-header">
                   <Offcanvas.Title>Shopping Cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
@@ -73,15 +82,16 @@ export default function Navigation() {
                   { // If there are items in the cart, display them
                   productsCount > 0 ? 
                     <>
-                      <p>Items in your cart:</p>
                       {cart.items.map((currentProduct, index) => (
                         <CartProduct key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
                       ))}
-                      <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
-                      <a href="/checkout" onClick={handleClose} className="btn btn-success">Checkout</a>
+                      <h4>Total: ${cart.getTotalCost().toFixed(2)}</h4>
+                      <a href="/checkout" onClick={handleClose} className="btn btn-light btn-checkout">
+                        Checkout <BsFillCartCheckFill className="text-success" />
+                      </a>
                     </>
                     :
-                    <h1>There are no items in your cart</h1>
+                    <h4>There are no items in your cart</h4>
                   }
 
                 </Offcanvas.Body>
