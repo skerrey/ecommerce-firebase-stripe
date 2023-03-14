@@ -1,0 +1,25 @@
+/* Description: Styling for the Navigation component */
+
+.logo-box {
+  display: flex;
+}
+
+.logo-img {
+  width: 100px;
+}
+
+.navbar-brand {
+  font-size: 1.7em;
+  font-family: 'Kelly Slab';
+  color: #185a4a;
+  font-weight: bold;
+}
+
+.offcanvas-header {
+  background-color: #f8f9fa;
+}
+
+.btn-checkout {
+  font-size: 1.2em;
+  font-family: 'Kelly Slab';
+}
