@@ -45,12 +45,10 @@ export default function Navigation() {
 
   return (
     <>
-      <Navbar bg="light" expand={expand}>
-        <div className="logo-box">
-          <img src={logo} alt="logo" className="logo-img" />
-        </div>
+      <Navbar bg="light" expand={expand} className="navbar">
         <Container>
           <Navbar.Brand href="/" className="navbar-brand">
+            <img src={logo} alt="logo" className="logo-img" />
             Coffee Hut
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
