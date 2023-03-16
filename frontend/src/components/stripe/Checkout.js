@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { CartContext } from "../../contexts/CartContext";
-import CartProduct from "./CartProduct";
+import Cart from "./Cart";
 import CheckoutForm from "./CheckoutForm";
 import { Row } from "react-bootstrap";
 import "./Checkout.css";
@@ -43,7 +43,7 @@ function Checkout() {
             <div className="product-box">
               <div xs={1} className="g-0">
                 {cart.items.map((currentProduct, index) => (
-                  <CartProduct key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
+                  <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
                 ))}
               </div>
             </div>
@@ -63,7 +63,7 @@ function Checkout() {
           <h4 className="pt-3">Items in your cart:</h4>
           <Row xs={1} md={3} className="g-0">
             {cart.items.map((currentProduct, index) => (
-              <CartProduct key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
+              <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
             ))}
             <h2>Total: ${cart.getTotalCost().toFixed(2)}</h2>
           </Row>

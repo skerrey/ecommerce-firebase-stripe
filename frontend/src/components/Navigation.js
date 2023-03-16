@@ -3,7 +3,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
 import { CartContext } from "../contexts/CartContext";
-import CartProduct from './stripe/CartProduct';
+import Cart from './stripe/Cart';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import logo from "../logo.svg";
@@ -58,7 +58,8 @@ export default function Navigation() {
 
               {/* If current user display dropdown, else display login */}
               {!currentUser ? 
-                <Nav.Link href="/login">Login</Nav.Link> :               
+                <Nav.Link href="/login">Login</Nav.Link> 
+                :               
                 <NavDropdown title={currentUser.displayName} id="basic-nav-dropdown">
                   <NavDropdown.Item href="/dashboard">Dashboard</NavDropdown.Item>
                   <NavDropdown.Item href="/settings">Settings <IoMdSettings /> </NavDropdown.Item>
@@ -81,7 +82,7 @@ export default function Navigation() {
                   productsCount > 0 ? 
                     <>
                       {cart.items.map((currentProduct, index) => (
-                        <CartProduct key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
+                        <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
                       ))}
                       <h4>Total: ${cart.getTotalCost().toFixed(2)}</h4>
                       <a href="/checkout" onClick={handleClose} className="btn btn-light btn-checkout">

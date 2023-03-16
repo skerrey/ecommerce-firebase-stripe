@@ -4,10 +4,9 @@ import { CartContext } from "../../contexts/CartContext";
 import { useContext } from "react";
 import { getProductData } from "../../productStore";
 import { BsFillTrash2Fill } from "react-icons/bs";
-import { BiPlusCircle } from "react-icons/bi";
-import "./CartProduct.css";
+import "./Cart.css";
 
-function CartProduct(props) {
+function Cart(props) {
   const cart = useContext(CartContext);
   const id = props.id;
   const quantity = props.quantity;
@@ -38,4 +37,4 @@ function CartProduct(props) {
   )
 }
 
-export default CartProduct;
+export default Cart;
