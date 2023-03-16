@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -15,4 +16,18 @@ code {
 @font-face {
   font-family: 'Kelly Slab';
   src: local('KellySlab-Regular'), url(./fonts/Kelly_Slab/KellySlab-Regular.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: local('Merriweather-Regular'), url(./fonts/Merriweather/Merriweather-Regular.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'Karma';
+  src: local('Karma-Regular'), url(./fonts/Karma/Karma-Regular.ttf) format('ttf');
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Merriweather', serif;
 }
