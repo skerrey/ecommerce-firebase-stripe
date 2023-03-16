@@ -1,13 +1,13 @@
 // Description: Navigation component
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
-import { CartContext } from "../contexts/CartContext";
-import Cart from './stripe/Cart';
-import { useAuth } from '../contexts/AuthContext';
+import { CartContext } from "../../contexts/CartContext";
+import Cart from '../Cart/index';
+import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import logo from "../logo.svg";
-import "./Navigation.css"
+import logo from "../../logo.svg";
+import "./style.css"
 
 // Icons
 import { IoMdSettings } from "react-icons/io";

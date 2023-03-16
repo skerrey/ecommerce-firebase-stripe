@@ -1,10 +1,10 @@
 // Description: Show cart products in modal
 
+import React, { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
-import { useContext } from "react";
 import { getProductData } from "../../productStore";
 import { BsFillTrash2Fill } from "react-icons/bs";
-import "./Cart.css";
+import "./style.css";
 
 function Cart(props) {
   const cart = useContext(CartContext);

@@ -1,8 +1,8 @@
 // Description: Ecommerce store
 
 import { Row, Col } from "react-bootstrap";
-import { productsArray } from "../productStore";
-import ProductCard from "../components/stripe/ProductCard";
+import { productsArray } from "../../productStore";
+import ProductCard from "../ProductCard/index";
 
 
 function Store() {

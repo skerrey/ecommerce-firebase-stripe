@@ -2,10 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { CartContext } from "../../contexts/CartContext";
-import Cart from "./Cart";
-import CheckoutForm from "./CheckoutForm";
+import Cart from "../Cart/index";
+import CheckoutForm from "../CheckoutForm/index";
 import { Row } from "react-bootstrap";
-import "./Checkout.css";
+import "./style.css";
 import Responsive from "../../helpers/Responsive";
 
 const stripePromise = loadStripe("pk_test_GKcjZ2vSJh0CsQIHg4FRDXuD00VJwUDHV3");

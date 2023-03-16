@@ -3,19 +3,17 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Cancel from "./pages/Cancel";
-import Store from "./pages/Store";
-import Success from "./pages/Success";
+import Store from "./components/Store/index";
 import CartProvider from "./contexts/CartContext";
 import AuthProvider from "./contexts/AuthContext";
-import Dashboard from "./components/firebase/Dashboard";
-import PrivateRoute from "./components/firebase/PrivateRoute";
-import Signup from "./components/firebase/Signup";
-import Login from "./components/firebase/Login";
-import UpdateProfile from "./components/firebase/UpdateProfile";
-import ForgotPassword from "./components/firebase/ForgotPassword";
-import Navigation from "./components/Navigation";
-import Checkout from "./components/stripe/Checkout";
+import Dashboard from "./components/Dashboard/index";
+import PrivateRoute from "./firebase/PrivateRoute";
+import Signup from "./components/Signup/index";
+import Login from "./components/Login/index";
+import UpdateProfile from "./components/UpdateProfile/index";
+import ForgotPassword from "./components/ForgotPassword/index";
+import Navigation from "./components/Navigation/index";
+import Checkout from "./components/Checkout/index";
 
 function App() {
   return (
@@ -28,8 +26,6 @@ function App() {
             <Container>
               <Routes>
                 <Route index element={<Store />} />
-                <Route path="success" element={<Success />} />
-                <Route path="cancel" element={<Cancel />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
                 <Route path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>

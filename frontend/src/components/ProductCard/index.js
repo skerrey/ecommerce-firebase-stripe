@@ -3,7 +3,7 @@
 import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import { CartContext } from "../../contexts/CartContext";
 import { useContext, useState } from "react";
-import "./ProductCard.css";
+import "./style.css";
 import { BsFillTrash2Fill, BsFillCartCheckFill } from "react-icons/bs";
 
 function ProductCard(props) { // props.product is the product we are selling
