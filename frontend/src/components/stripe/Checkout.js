@@ -4,7 +4,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { CartContext } from "../../contexts/CartContext";
 import CartProduct from "./CartProduct";
 import CheckoutForm from "./CheckoutForm";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import "./Checkout.css";
 import Responsive from "../../helpers/Responsive";
 
