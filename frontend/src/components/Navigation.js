@@ -6,7 +6,7 @@ import { CartContext } from "../contexts/CartContext";
 import CartProduct from './stripe/CartProduct';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import logo from "../images/logo.svg";
+import logo from "../logo.svg";
 import "./Navigation.css"
 
 // Icons
