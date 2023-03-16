@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+.background {
+  height: 100vh;
+  background-image: url('./images/background.jpg'); /* Photo by Alyssa Hurley from Unsplash */
+  background-size: contain;
+}
+
+.demo-wrap {
+  position: relative;
+  height: 100vh;
+}
+
+.demo-wrap:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  background-image: url('./images/background.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  z-index: -1;
+}
+
+.demo-content {
+  position: relative;
+}
