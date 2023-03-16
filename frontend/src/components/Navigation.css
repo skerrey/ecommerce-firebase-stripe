@@ -1,11 +1,12 @@
 /* Description: Styling for the Navigation component */
 
-.logo-box {
-  display: flex;
+.logo-img {
+  width: 60px;
 }
 
-.logo-img {
-  width: 100px;
+.navbar {
+  background-color: #e9e3c7 !important;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.541);
 }
 
 .navbar-brand {
@@ -16,10 +17,10 @@
 }
 
 .offcanvas-header {
-  background-color: #f8f9fa;
+  background-color: #e9e3c7;
 }
 
 .btn-checkout {
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-family: 'Kelly Slab';
 }
