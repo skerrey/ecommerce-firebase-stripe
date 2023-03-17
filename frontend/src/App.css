@@ -43,12 +43,12 @@
   background-size: contain;
 }
 
-.demo-wrap {
+.background-test {
   position: relative;
   height: 100vh;
 }
 
-.demo-wrap:before {
+.background-test:before {
   content: ' ';
   display: block;
   position: absolute;
@@ -64,6 +64,6 @@
   z-index: -1;
 }
 
-.demo-content {
+.background-content-test {
   position: relative;
 }
