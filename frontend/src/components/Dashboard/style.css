@@ -1,0 +1,7 @@
+/* Description: Styling for the Dashboard component */
+
+.dashboard-card {
+  width: 500px;
+  height: 100%;
+  margin: 50px auto;
+}

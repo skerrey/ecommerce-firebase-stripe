@@ -1,12 +1,12 @@
 /* Description: Styling for the Checkout component */
 
-.cart-box {
+.checkout-cart-box {
   display: flex;
   height: 100%;
   width: 100%;
 }
 
-.product-box {
+.checkout-product-box {
   width: 50%;
   height: calc(100vh - 200px);
   overflow-y: scroll;
@@ -15,14 +15,10 @@
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */ 
-.product-box::-webkit-scrollbar {
+.checkout-product-box::-webkit-scrollbar {
   display: none;
 }
 
 .checkout-box {
   width: 50%;
-}
-
-hr {
-  width: 95%;
 }
