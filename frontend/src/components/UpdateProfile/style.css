@@ -1,1 +1,7 @@
 /* Description: Styling for the UpdateProfile component */
+
+.update-profile-card {
+  width: 500px;
+  height: 100%;
+  margin: 50px auto;
+}
