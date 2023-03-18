@@ -14,6 +14,7 @@ import UpdateProfile from "./components/UpdateProfile/index";
 import ForgotPassword from "./components/ForgotPassword/index";
 import Navigation from "./components/Navigation/index";
 import Checkout from "./components/Checkout/index";
+import Footer from "./components/Footer/index";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/forgot-password" element={<ForgotPassword />} />
               </Routes>
             </Container>
+            <Footer />
           </Router>
 
       </CartProvider>
