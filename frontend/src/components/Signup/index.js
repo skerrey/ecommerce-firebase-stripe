@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import "./style.css"
 
 export default function Signup() {
   const firstNameRef = useRef();
@@ -54,7 +55,7 @@ export default function Signup() {
     <>
       <div className="parent-container">
         <div className="child-container">
-          <Card>
+          <Card className="signup-card">
             <Card.Body>
               <h2 className="text-center mb-4">Sign Up</h2>
               {error && <Alert variant="danger">{error}</Alert>}
