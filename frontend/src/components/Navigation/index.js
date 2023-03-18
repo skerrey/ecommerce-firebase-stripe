@@ -5,7 +5,7 @@ import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bo
 import { CartContext } from "../../contexts/CartContext";
 import Cart from '../Cart/index';
 import { useAuth } from '../../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import logo from "../../logo.svg";
 import "./style.css"
 
@@ -54,7 +54,10 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" >
             <Nav className="ms-auto" align="end">
-              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link>
+                <Link to="/" className='navigation-link'>Home</Link>
+              </Nav.Link>
+
 
               {/* If current user display dropdown, else display login */}
               {!currentUser ? 
