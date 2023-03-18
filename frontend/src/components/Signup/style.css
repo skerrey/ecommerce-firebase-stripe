@@ -1,0 +1,7 @@
+/* Description: styling for the Signup component */
+
+.signup-card {
+  width: 500px;
+  height: 100%;
+  margin: 50px auto;
+}
