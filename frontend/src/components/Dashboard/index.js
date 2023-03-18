@@ -35,7 +35,7 @@ export default function Dashboard() {
                 <br />
                 <strong>Email:</strong> {currentUser.email}
               </div>
-              <Link to="/settings" className="btn btn-primary d-block mt-3 w-50 mx-auto">
+              <Link to="/settings" className="btn btn-primary w-100 mt-3">
                 Update Profile
               </Link>
               <div className="w-100 text-center mt-2">
