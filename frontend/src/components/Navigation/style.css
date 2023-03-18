@@ -24,3 +24,8 @@
   font-size: 1.5em;
   font-family: 'Kelly Slab';
 }
+
+.navigation-link {
+  color: none;
+  text-decoration: inherit;
+}
