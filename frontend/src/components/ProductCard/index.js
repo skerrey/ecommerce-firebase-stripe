@@ -33,33 +33,33 @@ function ProductCard(props) { // props.product is the product we are selling
 
   return (
     <>
-      <Card className="card" style={{
+      <Card className="product-card" style={{
         backgroundImage: `url(${product.image})`,
       }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}>
-        <Card.Body className="card-body">
-          <div className="card-title">
+        <Card.Body className="product-card-body">
+          <div className="product-card-title">
             <h5>{product.title}</h5>
             <p>${product.price}</p>
           </div>
 
-          <div className="card-display">
+          <div className="product-card-display">
 
             { // If the product is in the cart, display the quantity and buttons to add or remove one from the cart 
             show && (productQuantity > 0 ?
-              <div className="card-up" style={{ animation : isClicked ? "card-up ease-in-out 0.6s" : "none" }}>
+              <div className="product-card-up" style={{ animation : isClicked ? "product-card-up ease-in-out 0.6s" : "none" }}>
                 <p className="pt-2">Add To Cart</p>
                 <Form as={Row}>
                   <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
                   <Col sm="6">
-                    <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="plus-min-del">-</Button>
-                    <Button sm="6" onClick={() => cart.addOneToCart(product.id)} className="plus-min-del">+</Button>
+                    <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="product-card-btn-custom">-</Button>
+                    <Button sm="6" onClick={() => cart.addOneToCart(product.id)} className="product-card-btn-custom">+</Button>
                   </Col>
                 </Form>
                 <Row className="justify-content-around">
                   <Col sm="6">
-                    <Button className="plus-min-del" variant="danger" onClick={(e) => { 
+                    <Button className="product-card-btn-custom" variant="danger" onClick={(e) => { 
                       cart.deleteFromCart(product.id); 
                       isClicked(e);
                     }}>
@@ -75,7 +75,7 @@ function ProductCard(props) { // props.product is the product we are selling
 
               </div> 
               :
-              <Button className="card-button-add-to-cart" onClick={(e) => {
+              <Button className="product-card-btn-add" onClick={(e) => {
                 cart.addOneToCart(product.id); 
                 isClicked(e);
               }}>Add To Cart</Button>

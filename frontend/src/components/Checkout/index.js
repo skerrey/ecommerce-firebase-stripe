@@ -39,8 +39,8 @@ function Checkout() {
       {!isMobile() ? // Check if mobile or desktop
         <>
           <h4 className="pt-3">Items in your cart:</h4>
-          <div className="cart-box">
-            <div className="product-box">
+          <div className="checkout-cart-box">
+            <div className="checkout-product-box">
               <div xs={1} className="g-0">
                 {cart.items.map((currentProduct, index) => (
                   <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />

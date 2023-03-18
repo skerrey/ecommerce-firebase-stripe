@@ -45,10 +45,10 @@ export default function Navigation() {
 
   return (
     <>
-      <Navbar bg="light" expand={expand} className="navbar">
+      <Navbar bg="light" expand={expand} className="navigation-navbar">
         <Container>
-          <Navbar.Brand href="/" className="navbar-brand">
-            <img src={logo} alt="logo" className="logo-img" />
+          <Navbar.Brand href="/" className="navigation-navbar-brand">
+            <img src={logo} alt="logo" className="navigation-logo-img" />
             Coffee Hut
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -73,7 +73,7 @@ export default function Navigation() {
               <Button onClick={handleShow}><FiShoppingCart /> ({productsCount}) Items</Button>
 
               <Offcanvas show={show} onHide={handleClose} placement="end">
-                <Offcanvas.Header closeButton className="offcanvas-header">
+                <Offcanvas.Header closeButton className="navigation-offcanvas-header">
                   <Offcanvas.Title>Shopping Cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
@@ -85,7 +85,7 @@ export default function Navigation() {
                         <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
                       ))}
                       <h4>Total: ${cart.getTotalCost().toFixed(2)}</h4>
-                      <a href="/checkout" onClick={handleClose} className="btn btn-light btn-checkout">
+                      <a href="/checkout" onClick={handleClose} className="btn btn-light navigation-btn-checkout">
                         Checkout <BsFillCartCheckFill className="text-success" />
                       </a>
                     </>

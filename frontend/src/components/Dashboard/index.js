@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Container, Card, Button, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import "./style.css";
 
 export default function Dashboard() {
   const [error, setError] = useState('');
@@ -25,14 +26,16 @@ export default function Dashboard() {
     <>
       <div>
         <Container>
-          <Card>
+          <Card className="dashboard-card">
             <Card.Body>
               <h2 className="text-center mb-4">Profile</h2>
-              {error && <Alert variant="danger">{error}</Alert>}
-              <strong>Name:</strong> {currentUser.displayName}
-              <br />
-              <strong>Email:</strong> {currentUser.email}
-              <Link to="/settings" className="btn btn-primary w-100 mt-3">
+              <div>
+                {error && <Alert variant="danger">{error}</Alert>}
+                <strong>Name:</strong> {currentUser.displayName}
+                <br />
+                <strong>Email:</strong> {currentUser.email}
+              </div>
+              <Link to="/settings" className="btn btn-primary d-block mt-3 w-50 mx-auto">
                 Update Profile
               </Link>
               <div className="w-100 text-center mt-2">
