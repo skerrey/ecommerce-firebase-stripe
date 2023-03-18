@@ -92,7 +92,7 @@ export default function UpdateProfile() {
               Update
             </Button>
             <div className="w-100 text-center mt-3">
-              <Link to="/">Cancel</Link>
+              <Link to="/dashboard">Cancel</Link>
             </div>
           </Form>
         </Card.Body>
