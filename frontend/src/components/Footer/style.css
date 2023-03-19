@@ -1,1 +1,14 @@
 /* Description: Styling for footer component */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(255, 255, 255, 0.2);
+  width: 300px;
+  height: 80px;
+  margin: auto;
+  margin-bottom: 30px;
+  border-radius: 25px;
+}
