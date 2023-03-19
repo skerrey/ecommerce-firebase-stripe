@@ -26,6 +26,7 @@
 }
 
 .navigation-link {
-  color: none;
+  color: #797061;
+  font-weight: 400;
   text-decoration: inherit;
 }
