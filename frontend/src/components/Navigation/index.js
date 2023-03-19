@@ -18,13 +18,12 @@ export default function Navigation() {
 
   const cart = useContext(CartContext);
   const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
 
   const [, setError] = useState('');
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const navigate = useNavigate();
 
   // logout user on click
   async function handleLogout() { 
@@ -55,9 +54,8 @@ export default function Navigation() {
           <Navbar.Collapse id="basic-navbar-nav" >
             <Nav className="ms-auto" align="end">
               <Nav.Link>
-                <Link to="/" className='navigation-link'>Home</Link>
+                <Link to="/" className="navigation-link">Home</Link>
               </Nav.Link>
-
 
               {/* If current user display dropdown, else display login */}
               {!currentUser ? 
