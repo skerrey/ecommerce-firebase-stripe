@@ -1,4 +1,4 @@
-/* Description: Styling for the Navigation component */
+ /* Description: Styling for the Navigation component */
 
 .navigation-logo-img {
   width: 60px;
@@ -16,6 +16,10 @@
   font-weight: bold;
 }
 
+.navigation-navbar-brand:hover {
+  color: #185a4a;
+}
+
 .navigation-offcanvas-header {
   background-color: #e9e3c7;
 }
@@ -29,4 +33,26 @@
   color: #797061;
   font-weight: 400;
   text-decoration: inherit;
+}
+
+.navigation-link:hover {
+  color: #797061;
+}
+
+.navigation-link-dropdown {
+  display: inline-block;
+  width: 100%;
+  color: #000;
+  text-decoration: inherit;
+  padding: 5px 0 5px 15px;
+}
+
+.navigation-link-dropdown:hover {
+  color: #000;
+  background-color: #e9ecef;
+}
+
+.navigation-link-dropdown:active {
+  color: #fff;
+  background-color: #007bff;
 }
