@@ -59,11 +59,17 @@ export default function Navigation() {
 
               {/* If current user display dropdown, else display login */}
               {!currentUser ? 
-                <Nav.Link href="/login">Login</Nav.Link> 
+                <Nav.Link>
+                  <Link to="/login" className="navigation-link">Login</Link>  
+                </Nav.Link> 
                 :               
                 <NavDropdown title={currentUser.displayName} id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/dashboard">Dashboard</NavDropdown.Item>
-                  <NavDropdown.Item href="/settings">Settings <IoMdSettings /> </NavDropdown.Item>
+                  <Link to="/dashboard" className="navigation-link-dropdown ">
+                    Dashboard
+                  </Link>
+                  <Link to="/settings" className="navigation-link-dropdown">
+                    Settings <IoMdSettings />
+                  </Link>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={handleLogout}>
                     Log Out
@@ -85,10 +91,12 @@ export default function Navigation() {
                       {cart.items.map((currentProduct, index) => (
                         <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
                       ))}
-                      <h4>Total: ${cart.getTotalCost().toFixed(2)}</h4>
-                      <a href="/checkout" onClick={handleClose} className="btn btn-light navigation-btn-checkout">
-                        Checkout <BsFillCartCheckFill className="text-success" />
-                      </a>
+                      <div className="pt-2 py-3">
+                        <h4 className="pt-2">Total: ${cart.getTotalCost().toFixed(2)}</h4>
+                        <Link to="/checkout" onClick={handleClose} className="btn btn-light navigation-btn-checkout">
+                          Checkout <BsFillCartCheckFill className="text-success" />
+                        </Link>
+                      </div>
                     </>
                     :
                     <h4>There are no items in your cart</h4>
