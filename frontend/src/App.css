@@ -38,7 +38,7 @@
 }
 
 .background {
-  height: 100vh;
+  height: 100vh; 
   background-image: url('./images/background.jpg'); /* Photo by Alyssa Hurley from Unsplash */
   background-size: cover;
   background-repeat: no-repeat;
