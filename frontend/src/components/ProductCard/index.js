@@ -2,7 +2,7 @@
 
 import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import { CartContext } from "../../contexts/CartContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { BsFillTrash2Fill, BsFillCartCheckFill } from "react-icons/bs";
@@ -15,6 +15,13 @@ function ProductCard(props) { // props.product is the product we are selling
 
   const [show, setShow] = useState(false); // Handles show upon mouse enter/leave
   const [clicked, setClicked] = useState(false); // Handles button visibility when clicked
+
+  useEffect(() => { // When the product is added to the cart, show the button "Add to Cart"
+    if (productQuantity > 0) {
+      setShow(true);
+      setClicked(true);
+    }
+  }, [productQuantity]);
 
   function onMouseEnter() { // When the mouse enters the card, show the button "Add to Cart"
     setShow(true);
@@ -49,7 +56,9 @@ function ProductCard(props) { // props.product is the product we are selling
 
             { // If the product is in the cart, display the quantity and buttons to add or remove one from the cart 
             show && (productQuantity > 0 ?
-              <div className="product-card-up" style={{ animation : isClicked ? "product-card-up ease-in-out 0.6s" : "none" }}>
+              <div className="product-card-up" style={{ animation : 
+                isClicked ? "product-card-up ease-in-out 0.6s" : "none"
+              }}>
                 <p className="pt-2">Add To Cart</p>
                 <Form as={Row}>
                   <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
