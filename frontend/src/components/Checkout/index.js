@@ -7,6 +7,7 @@ import CheckoutForm from "../CheckoutForm/index";
 import { Row } from "react-bootstrap";
 import "./style.css";
 import Responsive from "../../helpers/Responsive";
+import { AiOutlineDownCircle, AiOutlineUpCircle } from 'react-icons/ai';
 
 const stripePromise = loadStripe("pk_test_GKcjZ2vSJh0CsQIHg4FRDXuD00VJwUDHV3");
 
@@ -14,6 +15,23 @@ function Checkout() {
   const { isMobile } = Responsive();
   const cart = useContext(CartContext);
   const [clientSecret, setClientSecret] = useState("");
+  const [arrowDirection, setArrowDirection] = useState("down");
+
+  useEffect(() => {
+    const checkoutBox = document.querySelector('.checkout-product-box');
+    function handleScroll() {
+      if (checkoutBox.scrollTop > 0) {
+        setArrowDirection('up');
+      } else {
+        setArrowDirection('down');
+      }
+    }
+
+    checkoutBox.addEventListener('scroll', handleScroll);
+    return () => {
+      checkoutBox.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     // Create PaymentIntent as soon as the modal loads
@@ -41,6 +59,16 @@ function Checkout() {
           <h4 className="pt-3">Items in your cart:</h4>
           <div className="checkout-cart-box">
             <div className="checkout-product-box">
+              <div className="checkout-scroll-arrow">
+                {arrowDirection === 'down' ? (
+                    <>
+                      <AiOutlineDownCircle size={32} />
+                    </>
+
+                ) : (
+                  <AiOutlineUpCircle size={32} />
+                )}
+              </div>
               <div xs={1} className="g-0">
                 {cart.items.map((currentProduct, index) => (
                   <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
