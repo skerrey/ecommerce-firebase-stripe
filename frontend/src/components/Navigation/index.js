@@ -53,15 +53,15 @@ export default function Navigation() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" >
             <Nav className="ms-auto" align="end">
-              <Nav.Link>
+              <div className="pt-2 pe-2">
                 <Link to="/" className="navigation-link">Home</Link>
-              </Nav.Link>
+              </div>
 
               {/* If current user display dropdown, else display login */}
               {!currentUser ? 
-                <Nav.Link>
+                <div className="pt-2 pe-3">
                   <Link to="/login" className="navigation-link">Login</Link>  
-                </Nav.Link> 
+                </div> 
                 :               
                 <NavDropdown title={currentUser.displayName} id="basic-nav-dropdown">
                   <Link to="/dashboard" className="navigation-link-dropdown ">
