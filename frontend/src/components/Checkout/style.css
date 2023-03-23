@@ -7,6 +7,7 @@
 }
 
 .checkout-product-box {
+  position: relative;
   width: 50%;
   height: calc(100vh - 200px);
   overflow-y: scroll;
@@ -21,4 +22,14 @@
 
 .checkout-box {
   width: 50%;
+}
+
+.checkout-scroll-arrow {
+  position: fixed;
+  transition: all 0.5s linear;
+}
+
+.checkout-scroll-arrow:hover {
+  margin-top: 10px;
+  color: silver;
 }
