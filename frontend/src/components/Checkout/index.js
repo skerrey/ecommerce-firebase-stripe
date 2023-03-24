@@ -1,3 +1,5 @@
+// Description: Checkout component that renders the checkout form and cart
+
 import React, { useState, useEffect, useContext } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
