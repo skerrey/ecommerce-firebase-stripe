@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Success() {
 
+  localStorage.removeItem("cartProducts"); // removes cartProducts from local storage
 
   return (
     <>
