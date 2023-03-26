@@ -61,14 +61,14 @@ function ProductCard(props) { // props.product is the product we are selling
               }}>
                 <p className="pt-2">Add To Cart</p>
                 <Form as={Row}>
-                  <Form.Label column="true" sm="6">In Cart: {productQuantity}</Form.Label>
-                  <Col sm="6">
+                  <Form.Label column="true" xs="6">In Cart: {productQuantity}</Form.Label>
+                  <Col xs="6">
                     <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="product-card-btn-custom">-</Button>
                     <Button sm="6" onClick={() => cart.addOneToCart(product.id)} className="product-card-btn-custom">+</Button>
                   </Col>
                 </Form>
-                <Row className="justify-content-around">
-                  <Col sm="6">
+                <Row>
+                  <Col xs="6">
                     <Button className="product-card-btn-custom" variant="danger" onClick={(e) => { 
                       cart.deleteFromCart(product.id); 
                       isClicked(e);
@@ -76,7 +76,7 @@ function ProductCard(props) { // props.product is the product we are selling
                       <BsFillTrash2Fill />
                     </Button>
                   </Col>
-                  <Col sm="6" className="my-2">
+                  <Col xs="6" className="my-2">
                     <Link to="/checkout" className="btn btn-light">
                       Checkout <BsFillCartCheckFill className="text-success" />
                     </Link>
