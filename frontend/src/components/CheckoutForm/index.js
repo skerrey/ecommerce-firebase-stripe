@@ -7,6 +7,7 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import { FaStripe } from 'react-icons/fa';
 import "./style.css"
 
 export default function CheckoutForm() {
@@ -93,9 +94,10 @@ export default function CheckoutForm() {
         onChange={(e) => setEmail(e.target.value)}
       />
       <PaymentElement id="payment-element" className="pb-3" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit" className="btn btn-custom">
+      <button disabled={isLoading || !stripe || !elements} id="submit" className="btn checkout-form-btn-custom">
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+          {isLoading ? <div className="spinner" id="spinner"></div> 
+            : <>Pay now with <FaStripe size={32} /></>}
         </span>
       </button>
       {/* Show any error or success messages */}
