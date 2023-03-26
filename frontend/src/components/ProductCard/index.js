@@ -56,7 +56,7 @@ function ProductCard(props) { // props.product is the product we are selling
 
             { // If the product is in the cart, display the quantity and buttons to add or remove one from the cart 
             show && (productQuantity > 0 ?
-              <div className="product-card-up" style={{ animation : 
+              <div className="product-card-up" style={{ animation: 
                 isClicked ? "product-card-up ease-in-out 0.6s" : "none"
               }}>
                 <p className="pt-2">Add To Cart</p>
