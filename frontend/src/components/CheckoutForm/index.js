@@ -7,6 +7,7 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import "./style.css"
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -91,10 +92,10 @@ export default function CheckoutForm() {
         id="link-authentication-element"
         onChange={(e) => setEmail(e.target.value)}
       />
-      <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <PaymentElement id="payment-element" className="pb-3" options={paymentElementOptions} />
+      <button disabled={isLoading || !stripe || !elements} id="submit" className="btn btn-custom">
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : <div className="btn-custom">Pay now</div>}
+          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
       </button>
       {/* Show any error or success messages */}
