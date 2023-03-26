@@ -1,12 +1,14 @@
 /* Description: Styling for the Checkout Form component - Stripe */
 
-.btn-custom {
-  border: 1px solid;
+.checkout-form-btn-custom {
+
   background-color: #3f3768;
   color: white;
 }
 
-.btn-custom:hover {
+.checkout-form-btn-custom:hover {
+
   background-color: #3f3768;
   color: white;
+  box-shadow: 0 0 0 0.1rem #3f3768;
 }
