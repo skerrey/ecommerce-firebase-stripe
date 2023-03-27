@@ -68,7 +68,6 @@ export default function CheckoutForm() {
       },
     });
 
-
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
     // your `return_url`. For some payment methods like iDEAL, your customer will
@@ -96,7 +95,7 @@ export default function CheckoutForm() {
       <PaymentElement id="payment-element" className="pb-3" options={paymentElementOptions} />
       <button disabled={isLoading || !stripe || !elements} id="submit" className="btn checkout-form-btn-custom">
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> 
+          {isLoading ? <div className="checkout-form-spinner"></div>  
             : <>Pay now with <FaStripe size={32} /></>}
         </span>
       </button>
