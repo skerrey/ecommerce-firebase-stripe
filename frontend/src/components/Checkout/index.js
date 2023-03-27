@@ -11,7 +11,7 @@ import "./style.css";
 import Responsive from "../../helpers/Responsive";
 import { AiOutlineDownCircle, AiOutlineUpCircle } from 'react-icons/ai';
 
-const stripePromise = loadStripe("pk_test_GKcjZ2vSJh0CsQIHg4FRDXuD00VJwUDHV3");
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
 function Checkout() {
   const { isMobile } = Responsive();
