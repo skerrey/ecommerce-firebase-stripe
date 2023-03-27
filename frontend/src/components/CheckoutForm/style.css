@@ -1,14 +1,40 @@
 /* Description: Styling for the Checkout Form component - Stripe */
 
 .checkout-form-btn-custom {
-
+  border: none;
   background-color: #3f3768;
   color: white;
 }
 
 .checkout-form-btn-custom:hover {
-
   background-color: #3f3768;
   color: white;
   box-shadow: 0 0 0 0.1rem #3f3768;
+}
+
+.checkout-form-spinner {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.checkout-form-spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top-color: #3f3768 !important;
+  animation: checkout-form-spinner 0.8s ease-in-out infinite;
+}
+
+@keyframes checkout-form-spinner {
+  to {
+    transform: rotate(360deg);
+  }
 }
