@@ -9,7 +9,8 @@ export const CartContext = createContext({
   addOneToCart: () => {},
   removeOneFromCart: () => {},
   deleteFromCart: () => {},
-  getTotalCost: () => {}
+  getTotalCost: () => {},
+  clearCart: () => {}
 });
 
 const LOCAL_STORAGE_KEY = "cartProducts";
@@ -95,13 +96,19 @@ export function CartProvider({children}) {
     return totalCost;
   }
 
+  function clearCart() {
+    setCartProducts([]);
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+  }
+
   const value = {
     items: cartProducts,
     getProductQuantity,
     addOneToCart,
     removeOneFromCart,
     deleteFromCart,
-    getTotalCost
+    getTotalCost,
+    clearCart,
   }
 
   return (
