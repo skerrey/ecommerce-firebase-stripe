@@ -16,8 +16,6 @@ const LOCAL_STORAGE_KEY = "cartProducts";
 
 export function CartProvider({children}) {
 
-  // [ {id: 1, quantity: 2}, {id: 2, quantity: 1} ]
-
   const [cartProducts, setCartProducts] = useState(
     JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []
   ); 
@@ -97,7 +95,7 @@ export function CartProvider({children}) {
     return totalCost;
   }
 
-  const contextValue = {
+  const value = {
     items: cartProducts,
     getProductQuantity,
     addOneToCart,
@@ -107,7 +105,7 @@ export function CartProvider({children}) {
   }
 
   return (
-    <CartContext.Provider value={contextValue}>
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   )
