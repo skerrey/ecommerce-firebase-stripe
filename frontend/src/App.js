@@ -15,6 +15,7 @@ import ForgotPassword from "./components/ForgotPassword/index";
 import Navigation from "./components/Navigation/index";
 import Checkout from "./components/Checkout/index";
 import Footer from "./components/Footer/index";
+import Success from "./components/Success/index";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/success" element={<Success />} />
               </Routes>
             </Container>
             <Footer />
