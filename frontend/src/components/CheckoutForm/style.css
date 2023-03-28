@@ -1,5 +1,10 @@
 /* Description: Styling for the Checkout Form component - Stripe */
 
+.checkout-form-text {
+  color: #5f606a;
+  font-size: .93rem;
+}
+
 .checkout-form-btn-custom {
   border: none;
   background-color: #3f3768;
