@@ -19,7 +19,7 @@ import Success from "./components/Success/index";
 
 function App() {
   return (
-    <div className="background">
+    <>
       <AuthProvider>
       <CartProvider>
 
@@ -42,7 +42,7 @@ function App() {
 
       </CartProvider>
       </AuthProvider>
-    </div>
+    </>
   );
 }
 
