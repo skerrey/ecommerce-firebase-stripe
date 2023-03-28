@@ -16,8 +16,8 @@ export default function CheckoutForm() {
   const elements = useElements();
   const { currentUser } = useAuth();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState(ifUserName());
+  const [email, setEmail] = useState(ifUserEmail());
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -86,14 +86,19 @@ export default function CheckoutForm() {
   };
 
   const paymentElementOptions = {
-    layout: "tabs"
+    layout: "tabs",
+    defaultValues: {
+      billingDetails: {
+        email: ifUserEmail(),
+      }
+    }
   }
 
-  function ifUser() {
+  function ifUserName() {
     if (currentUser) {
       return currentUser.displayName
     } else {
-      return name
+      return null
     }
   }
 
@@ -101,7 +106,7 @@ export default function CheckoutForm() {
     if (currentUser) {
       return currentUser.email
     } else {
-      return email
+      return null
     }
   }
 
@@ -109,18 +114,12 @@ export default function CheckoutForm() {
     <form id="payment-form" className="mb-4 pb-5 checkout-form-text" onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" className="form-control checkout-form-text" value={ifUser()} onChange={(e) => setName(e.target.value)} required />
-      </div>
-      <div className="form-group pb-2">
-        <label htmlFor="email">Email</label>
-        <input type="text" id="email" className="form-control" value={ifUserEmail()} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="text" id="name" className="form-control" value={name} onChange={(e) => setName(e.target.value)} required />
       </div>
 
-      {/* The LinkAuthenticationElement is hidden because Stripe does not allow for prefilled email population for the Payment Element at this time */}
       <LinkAuthenticationElement
         id="link-authentication-element"
         onChange={(e) => setEmail(e.target.value)}
-        className="invisible position-absolute"
       />
 
       <PaymentElement id="payment-element" className="pb-3" options={paymentElementOptions} />
