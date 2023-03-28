@@ -7,16 +7,21 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import { useAuth } from "../../contexts/AuthContext";
 import { FaStripe } from 'react-icons/fa';
 import "./style.css"
 
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
+  const { currentUser } = useAuth();
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+
 
   useEffect(() => {
     if (!stripe) {
@@ -54,25 +59,23 @@ export default function CheckoutForm() {
 
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
     setIsLoading(true);
 
-    const { error } = await stripe.confirmPayment({
+    const { error} = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/success",
+        return_url: window.location.origin + "/success",
+        payment_method_data: {
+          billing_details: {
+            name,
+          },
+        },
       },
     });
 
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
@@ -86,12 +89,40 @@ export default function CheckoutForm() {
     layout: "tabs"
   }
 
+  function ifUser() {
+    if (currentUser) {
+      return currentUser.displayName
+    } else {
+      return name
+    }
+  }
+
+  function ifUserEmail() {
+    if (currentUser) {
+      return currentUser.email
+    } else {
+      return email
+    }
+  }
+
   return (
-    <form id="payment-form" className="mb-4 pb-5" onSubmit={handleSubmit}>
+    <form id="payment-form" className="mb-4 pb-5 checkout-form-text" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="name">Name</label>
+        <input type="text" id="name" className="form-control checkout-form-text" value={ifUser()} onChange={(e) => setName(e.target.value)} required />
+      </div>
+      <div className="form-group pb-2">
+        <label htmlFor="email">Email</label>
+        <input type="text" id="email" className="form-control" value={ifUserEmail()} onChange={(e) => setEmail(e.target.value)} required />
+      </div>
+
+      {/* The LinkAuthenticationElement is hidden because Stripe does not allow for prefilled email population for the Payment Element at this time */}
       <LinkAuthenticationElement
         id="link-authentication-element"
         onChange={(e) => setEmail(e.target.value)}
+        className="invisible position-absolute"
       />
+
       <PaymentElement id="payment-element" className="pb-3" options={paymentElementOptions} />
       <button disabled={isLoading || !stripe || !elements} id="submit" className="btn checkout-form-btn-custom">
         <span id="button-text">
