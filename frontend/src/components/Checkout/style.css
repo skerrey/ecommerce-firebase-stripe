@@ -1,35 +1,33 @@
 /* Description: Styling for the Checkout component */
 
-.checkout-cart-box {
+.checkout-cart {
   display: flex;
   height: 100%;
   width: 100%;
 }
 
-.checkout-product-box {
+.checkout-products {
   position: relative;
-  width: 50%;
-  height: calc(100vh - 200px);
+  width: 100%;
+  /* height: calc(100vh - 200px); ---- see inline styling */
   overflow-y: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */ 
-.checkout-product-box::-webkit-scrollbar {
+.checkout-products::-webkit-scrollbar {
   display: none;
 }
 
-.checkout-box {
-  width: 50%;
+.checkout-form {
+  width: 100%;
+  padding-top: 20px;
 }
 
 .checkout-scroll-arrow {
-  position: fixed;
+  position: absolute;
   transition: all 0.5s linear;
-}
-
-.checkout-scroll-arrow:hover {
-  margin-top: 10px;
-  color: silver;
+  cursor: pointer;
+  z-index: 1;
 }
