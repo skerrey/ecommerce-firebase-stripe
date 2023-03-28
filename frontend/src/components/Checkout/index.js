@@ -10,10 +10,12 @@ import Cart from "../Cart/index";
 import CheckoutForm from "../CheckoutForm/index";
 import Responsive from "../../helpers/Responsive";
 import { AiOutlineDownCircle, AiOutlineUpCircle } from 'react-icons/ai';
-import { Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "./style.css";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+
+const checkoutProducts = document.querySelector('.checkout-products');
 
 function Checkout() {
   const { isMobile } = Responsive();
@@ -23,20 +25,27 @@ function Checkout() {
   const [arrowDirection, setArrowDirection] = useState("down");
 
   useEffect(() => {
-    const checkoutBox = document.querySelector('.checkout-product-box');
     function handleScroll() {
-      if (checkoutBox.scrollTop > 0) {
+      if (checkoutProducts.scrollTop > 0) {
         setArrowDirection('up');
       } else {
         setArrowDirection('down');
       }
     }
 
-    checkoutBox.addEventListener('scroll', handleScroll);
+    checkoutProducts.addEventListener('scroll', handleScroll);
     return () => {
-      checkoutBox.removeEventListener('scroll', handleScroll);
+      checkoutProducts.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  function scrollToBottom() {
+    checkoutProducts.scrollTo(0, checkoutProducts.scrollHeight);
+  }
+
+  function scrollToTop() {
+    checkoutProducts.scrollTo(0, 0);
+  }
 
   useEffect(() => {
     // Create PaymentIntent as soon as the modal loads
@@ -59,56 +68,39 @@ function Checkout() {
 
   return (
     <>
-      {!isMobile() ? // Check if mobile or desktop
-        <>
+      <Row xs={1} md={2} className="checkout-cart">
+        <Col>
           <h4 className="pt-3">Items in your cart:</h4>
-          <div className="checkout-cart-box">
-            <div className="checkout-product-box">
-              <div className="checkout-scroll-arrow">
-                {arrowDirection === 'down' ? ( // Check if arrow should be up or down
-                    <>
-                      <AiOutlineDownCircle size={32} />
-                    </>
-                ) : (
-                  <AiOutlineUpCircle size={32} />
-                )}
-              </div>
-              <div xs={1} className="g-0">
-                {cart.items.map((currentProduct, index) => (
-                  <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
-                ))}
-              </div>
-            </div>
-  
-            <div className="checkout-box">
-              <h2>Total: ${cart.getTotalCost().toFixed(2)}</h2>
-              {!currentUser ? <div className="pb-3 fst-italic">Checkout out guest? <Link to="/login" className="fst-normal">Login</Link></div> : null}
-              {clientSecret && (
-                <Elements options={options} stripe={stripePromise}>
-                  <CheckoutForm />
-                </Elements>
-              )}
+          <div className="checkout-scroll-arrow">
+            {arrowDirection === 'down' ? ( // Check if arrow should be up or down
+                <AiOutlineDownCircle size={32} onClick={scrollToBottom} />
+            ) : (
+              <AiOutlineUpCircle size={32} onClick={scrollToTop} />
+            )}
+          </div>
+          <div className="checkout-products" style={{ height: 
+          isMobile() ? "100%" : "calc(100vh - 200px)" }}>
+
+            <div xs={1} className="g-0">
+              {cart.items.map((currentProduct, index) => (
+                <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
+              ))}
             </div>
           </div>
-        </>
-        :
-        <>
-          <h4 className="pt-3">Items in your cart:</h4>
-          <Row xs={1} md={3} className="g-0">
-            {cart.items.map((currentProduct, index) => (
-              <Cart key={index} id={currentProduct.id} quantity={currentProduct.quantity} />
-            ))}
+        </Col>
+          
+        <Col>
+          <div className="checkout-form">
             <h2>Total: ${cart.getTotalCost().toFixed(2)}</h2>
-          </Row>
-          <div className="pb-5">
+            {!currentUser ? <div className="pb-3 fst-italic">Checkout out guest? <Link to="/login" className="fst-normal">Login</Link></div> : null}
             {clientSecret && (
               <Elements options={options} stripe={stripePromise}>
                 <CheckoutForm />
               </Elements>
             )}
           </div>
-        </>
-      }
+        </Col>
+      </Row>
     </>
   );
 }
