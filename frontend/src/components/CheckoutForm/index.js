@@ -21,8 +21,6 @@ export default function CheckoutForm() {
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-
-
   useEffect(() => {
     if (!stripe) {
       return;
@@ -64,7 +62,7 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
-    const { error} = await stripe.confirmPayment({
+    const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: window.location.origin + "/success",
