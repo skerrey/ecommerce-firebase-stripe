@@ -82,7 +82,7 @@ function Checkout() {
   
             <div className="checkout-box">
               <h2>Total: ${cart.getTotalCost().toFixed(2)}</h2>
-              {!currentUser ? <div className="pb-3 ps-2 fst-italic">Checkout out guest? <Link to="/login" className="fst-normal">Login</Link></div> : null}
+              {!currentUser ? <div className="pb-3 fst-italic">Checkout out guest? <Link to="/login" className="fst-normal">Login</Link></div> : null}
               {clientSecret && (
                 <Elements options={options} stripe={stripePromise}>
                   <CheckoutForm />
