@@ -31,6 +31,7 @@
 }
 
 .cart-btn-custom {
+  margin-top: 5px;
   justify-content: center;
   line-height: 100%;
   font-size: 1.5rem;
