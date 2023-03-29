@@ -15,8 +15,6 @@ import "./style.css";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
-const checkoutProducts = document.querySelector('.checkout-products');
-
 function Checkout() {
   const { isMobile } = Responsive();
   const cart = useContext(CartContext);
@@ -25,6 +23,7 @@ function Checkout() {
   const [arrowDirection, setArrowDirection] = useState("down");
 
   useEffect(() => {
+    
     function handleScroll() {
       if (checkoutProducts.scrollTop > 0) {
         setArrowDirection('up');
@@ -33,17 +32,26 @@ function Checkout() {
       }
     }
 
-    checkoutProducts.addEventListener('scroll', handleScroll);
+    const checkoutProducts = document.querySelector('.checkout-products');
+
+    if (checkoutProducts) {
+      checkoutProducts.addEventListener('scroll', handleScroll);
+    }
     return () => {
-      checkoutProducts.removeEventListener('scroll', handleScroll);
+      if (checkoutProducts) {
+        checkoutProducts.removeEventListener('scroll', handleScroll);
+      }
     };
+    
   }, []);
 
   function scrollToBottom() {
+    const checkoutProducts = document.querySelector('.checkout-products');
     checkoutProducts.scrollTo(0, checkoutProducts.scrollHeight);
   }
 
   function scrollToTop() {
+    const checkoutProducts = document.querySelector('.checkout-products');
     checkoutProducts.scrollTo(0, 0);
   }
 
@@ -94,7 +102,7 @@ function Checkout() {
             <h2>Total: ${cart.getTotalCost().toFixed(2)}</h2>
             {!currentUser ? <div className="pb-3 fst-italic">Checkout out guest? <Link to="/login" className="fst-normal">Login</Link></div> : null}
             {clientSecret && (
-              <Elements options={options} stripe={stripePromise}>
+              <Elements key={clientSecret} options={options} stripe={stripePromise}>
                 <CheckoutForm />
               </Elements>
             )}
