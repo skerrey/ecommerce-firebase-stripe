@@ -16,8 +16,8 @@ export default function CheckoutForm() {
   const elements = useElements();
   const { currentUser } = useAuth();
 
-  const [name, setName] = useState(ifUserName());
-  const [email, setEmail] = useState(ifUserEmail());
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -83,28 +83,15 @@ export default function CheckoutForm() {
     setIsLoading(false);
   };
 
+  const userEmail = currentUser ? currentUser.email : "";
+  const userName = currentUser ? currentUser.displayName : "";
+
   const paymentElementOptions = {
     layout: "tabs",
     defaultValues: {
       billingDetails: {
-        email: ifUserEmail(),
+        email: userEmail,
       }
-    }
-  }
-
-  function ifUserName() {
-    if (currentUser) {
-      return currentUser.displayName
-    } else {
-      return null
-    }
-  }
-
-  function ifUserEmail() {
-    if (currentUser) {
-      return currentUser.email
-    } else {
-      return null
     }
   }
 
@@ -112,12 +99,12 @@ export default function CheckoutForm() {
     <form id="payment-form" className="mb-4 pb-5 checkout-form-text" onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" className="form-control" value={name} onChange={(e) => setName(e.target.value)} required />
+        <input type="text" id="name" className="form-control" value={userName} onChange={(e) => setName(e.target.value)} required />
       </div>
 
       <LinkAuthenticationElement
         id="link-authentication-element"
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target?.value)}
       />
 
       <PaymentElement id="payment-element" className="pb-3" options={paymentElementOptions} />
