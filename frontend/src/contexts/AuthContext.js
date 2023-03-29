@@ -5,7 +5,8 @@ import { auth } from '../firebase/firebase.config';
 import { 
   createUserWithEmailAndPassword, 
   updateProfile, 
-  signInWithEmailAndPassword 
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail
 } from 'firebase/auth';
 
 const AuthContext = React.createContext();
@@ -36,7 +37,7 @@ export default function AuthProvider({ children }) {
   }
 
   function resetPassword(email) { // Reset password
-    return auth.sendPasswordResetEmail(email);
+    return sendPasswordResetEmail(auth, email);
   }
 
   function updateEmail(email) { // Update email
