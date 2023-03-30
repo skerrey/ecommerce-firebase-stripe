@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Container } from "react-bootstrap";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Store from "./components/Store/index";
 import CartProvider from "./contexts/CartContext";
 import AuthProvider from "./contexts/AuthContext";
@@ -28,13 +28,13 @@ function App() {
             <Container>
               <Routes>
                 <Route index element={<Store />} />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
-                <Route path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/success" element={<Success />} />
+                <Route exact path="/checkout" element={<Checkout />} />
+                <Route exact path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
+                <Route exact path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
+                <Route exact path="/signup" element={<Signup />} />
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/forgot-password" element={<ForgotPassword />} />
+                <Route exact path="/success" element={<Success />} />
               </Routes>
             </Container>
             <Footer />
