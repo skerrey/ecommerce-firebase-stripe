@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Container } from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Store from "./components/Store/index";
 import CartProvider from "./contexts/CartContext";
 import AuthProvider from "./contexts/AuthContext";
