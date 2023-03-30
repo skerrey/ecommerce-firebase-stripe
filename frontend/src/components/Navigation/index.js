@@ -47,7 +47,7 @@ export default function Navigation() {
       <Navbar bg="light" expand={expand} className="navigation-navbar">
         <Container>
           <Navbar.Brand href="/" className="navigation-navbar-brand">
-            <img src={logo} alt="logo" className="navigation-logo-img" />
+            <img src={logo} alt="logo" width="60" height="60" />
             Coffee Hut
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -63,7 +63,7 @@ export default function Navigation() {
                   <Link to="/login" className="navigation-link">Login</Link>  
                 </div> 
                 :               
-                <NavDropdown title={currentUser.displayName} id="basic-nav-dropdown">
+                <NavDropdown title={<span className="navigation-nav-dropdown-title">{currentUser.displayName}</span>} id="basic-nav-dropdown">
                   <Link to="/dashboard" className="navigation-link-dropdown ">
                     Dashboard
                   </Link>
@@ -77,7 +77,7 @@ export default function Navigation() {
                 </NavDropdown>
               }
               
-              <Button onClick={handleShow}><FiShoppingCart /> ({productsCount}) Items</Button>
+              <Button aria-label="shopping cart" onClick={handleShow}><FiShoppingCart /> ({productsCount}) Items</Button>
 
               <Offcanvas show={show} onHide={handleClose} placement="end">
                 <Offcanvas.Header closeButton className="navigation-offcanvas-header">

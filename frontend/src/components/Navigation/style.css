@@ -1,9 +1,5 @@
  /* Description: Styling for the Navigation component */
 
-.navigation-logo-img {
-  width: 60px;
-}
-
 .navigation-navbar {
   background-color: #e9e3c7 !important;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.541);
@@ -29,14 +25,22 @@
   font-family: 'Kelly Slab';
 }
 
+.navigation-nav-dropdown-title {
+  color: #4e483e;
+}
+
+.navigation-nav-dropdown-title:hover {
+  color: rgb(7, 6, 6);
+}
+
 .navigation-link {
-  color: #797061;
+  color: #4e483e;
   font-weight: 400;
   text-decoration: inherit;
 }
 
 .navigation-link:hover {
-  color: #797061;
+  color: #000;
 }
 
 .navigation-link-dropdown {

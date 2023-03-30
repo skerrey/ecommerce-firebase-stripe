@@ -48,7 +48,7 @@ function ProductCard(props) { // props.product is the product we are selling
       onMouseLeave={onMouseLeave}>
         <Card.Body className="product-card-body">
           <div className="product-card-title">
-            <h5>{product.title}</h5>
+            <div className="h5">{product.title}</div>
             <p>${product.price}</p>
           </div>
 
@@ -63,13 +63,13 @@ function ProductCard(props) { // props.product is the product we are selling
                 <Form as={Row}>
                   <Form.Label column="true" xs="6">In Cart: {productQuantity}</Form.Label>
                   <Col xs="6">
-                    <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="product-card-btn-custom">-</Button>
-                    <Button sm="6" onClick={() => cart.addOneToCart(product.id)} className="product-card-btn-custom">+</Button>
+                    <Button sm="6" onClick={() => cart.removeOneFromCart(product.id)} className="product-card-btn-custom" aria-label="delete one from cart button">-</Button>
+                    <Button sm="6" onClick={() => cart.addOneToCart(product.id)} className="product-card-btn-custom" aria-label="add one to cart button">+</Button>
                   </Col>
                 </Form>
                 <Row>
                   <Col xs="6">
-                    <Button className="product-card-btn-custom" variant="danger" onClick={(e) => { 
+                    <Button className="product-card-btn-custom" variant="danger" aria-label="delete from cart" onClick={(e) => { 
                       cart.deleteFromCart(product.id); 
                       isClicked(e);
                     }}>
@@ -85,7 +85,7 @@ function ProductCard(props) { // props.product is the product we are selling
 
               </div> 
               :
-              <Button className="product-card-btn-add" onClick={(e) => {
+              <Button className="product-card-btn-add" aria-label="add one to cart" onClick={(e) => {
                 cart.addOneToCart(product.id); 
                 isClicked(e);
               }}>Add To Cart</Button>

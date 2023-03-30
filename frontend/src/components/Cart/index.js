@@ -23,12 +23,12 @@ function Cart(props) {
       </div>
       <div className="cart-info-box">
         {quantity === 1 ?
-          <div className="btn cart-btn-custom ps-2" size="sm" onClick={() => cart.deleteFromCart(id)}><BsFillTrash2Fill style={{color: "#aa4a44"}} /></div>
+          <div className="btn cart-btn-custom ps-2" size="sm" aria-label="delete from cart" onClick={() => cart.deleteFromCart(id)}><BsFillTrash2Fill style={{color: "#aa4a44"}} /></div>
           :
-          <div className="btn cart-btn-custom" onClick={() => cart.removeOneFromCart(productData.id)}>-</div>
+          <div className="btn cart-btn-custom" aria-label="remove one from cart" onClick={() => cart.removeOneFromCart(productData.id)}>-</div>
       } 
         <div className="cart-quantity">{quantity}</div>
-        <div className="btn cart-btn-custom float-right" onClick={() => cart.addOneToCart(productData.id)}>+</div>
+        <div className="btn cart-btn-custom float-right" aria-label="add one to cart" onClick={() => cart.addOneToCart(productData.id)}>+</div>
       </div>
       <hr className="w-75 mx-auto" />
     </>
