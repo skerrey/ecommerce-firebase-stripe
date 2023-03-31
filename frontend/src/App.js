@@ -15,9 +15,6 @@ import Navigation from "./components/Navigation/index";
 import Checkout from "./components/Checkout/index";
 import Footer from "./components/Footer/index";
 import Success from "./components/Success/index";
-import { createHashHistory } from 'history';
-
-const history = createHashHistory();
 
 function App() {
   return (
@@ -25,7 +22,7 @@ function App() {
       <AuthProvider>
       <CartProvider>
 
-          <HashRouter history={history}>
+          <HashRouter basename="/">
             <Navigation />
             <Container>
               <Routes>
