@@ -11,6 +11,11 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(express.json());
 
+app.use('*', function(req, res, next) {
+  res.send('<!DOCTYPE html><html><head><title>My App</title></head><body><div id="root"></div><script src="bundle.js"></script></body></html>');
+});
+
+
 
 const calculateOrderAmount = (items) => {
   console.log(`Item total: ${items}`);
