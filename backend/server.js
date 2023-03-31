@@ -41,7 +41,7 @@ app.post("/create-payment-intent", async (req, res) => {
 
 // Add this route to serve index.html for all routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/public', 'index.html'));
 });
 
 app.listen(4000, () => console.log("Server started on port 4000"));
