@@ -8,7 +8,7 @@ const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
 // Middleware
 const app = express();
 app.use(cors());
-app.use(express.static("public"));
+app.use("/", express.static(__dirname));
 app.use(express.json());
 
 const calculateOrderAmount = (items) => {
