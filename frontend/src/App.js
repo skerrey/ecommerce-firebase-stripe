@@ -21,7 +21,7 @@ function App() {
     <>
       <AuthProvider>
       <CartProvider>
-        <Router basename="/">
+        <Router>
 
           <Navigation />
           <Container>

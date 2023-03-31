@@ -8,9 +8,9 @@ const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
 
 // Middleware
 const app = express();
-
+  
 app.use(cors());
-app.use(express.static(path.join(__dirname, "..", "frontend", "public")));
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'public')));
 app.use(express.json());
 
 const calculateOrderAmount = (items) => {
@@ -39,9 +39,9 @@ app.post("/create-payment-intent", async (req, res) => {
   });
 });
 
-// Serve index.html for all routes
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "frontend", "public", "index.html"));
+// Add this route to serve index.html for all routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'public', 'index.html'));
 });
 
 app.listen(4000, () => console.log("Server started on port 4000"));
