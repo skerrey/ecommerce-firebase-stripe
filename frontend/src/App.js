@@ -27,7 +27,7 @@ function App() {
             <Container>
               <Routes>
                 <Route exact path="/" element={<Store />} />
-                <Route exact path="/checkout" element={<Checkout />} />
+                <Route exact path="https://coffee-hut.sethkerrey.com/checkout" element={<Checkout />} />
                 <Route exact path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
                 <Route exact path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
                 <Route exact path="/signup" element={<Signup />} />
