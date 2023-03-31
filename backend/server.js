@@ -11,6 +11,17 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(express.json());
 
+// Serve static assets (e.g. index.html) if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("frontend/build"));
+
+  // Serve index.html for any unknown routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
+
 const calculateOrderAmount = (items) => {
   console.log(`Item total: ${items}`);
   totalCost = items * 100;
