@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Container } from "react-bootstrap";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Store from "./components/Store/index";
 import CartProvider from "./contexts/CartContext";
 import AuthProvider from "./contexts/AuthContext";
@@ -22,7 +22,7 @@ function App() {
       <AuthProvider>
       <CartProvider>
 
-          <Router basename="/">
+          <HashRouter basename="/">
             <Navigation />
             <Container>
               <Routes>
@@ -37,7 +37,7 @@ function App() {
               </Routes>
             </Container>
             <Footer />
-          </Router>
+          </HashRouter>
 
       </CartProvider>
       </AuthProvider>
