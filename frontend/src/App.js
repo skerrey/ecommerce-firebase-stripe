@@ -26,7 +26,7 @@ function App() {
             <Navigation />
             <Container>
               <Routes>
-                <Route index element={<Store />} />
+                <Route path="/" element={<Store />} />
                 <Route exact path="/checkout" element={<Checkout />} />
                 <Route exact path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
                 <Route exact path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
