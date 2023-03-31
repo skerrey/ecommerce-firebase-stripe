@@ -26,14 +26,14 @@ function App() {
             <Navigation />
             <Container>
               <Routes>
-                <Route exact path="/" element={<Store />} />
-                <Route exact path="https://coffee-hut.sethkerrey.com/checkout" element={<Checkout />} />
-                <Route exact path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
-                <Route exact path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
-                <Route exact path="/signup" element={<Signup />} />
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/forgot-password" element={<ForgotPassword />} />
-                <Route exact path="/success" element={<Success />} />
+                <Route path="/" element={<Store />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
+                <Route path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/success" element={<Success />} />
               </Routes>
             </Container>
             <Footer />
