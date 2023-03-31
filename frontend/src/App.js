@@ -28,7 +28,7 @@ function App() {
             <Navigation />
             <Container>
               <Routes>
-                <Route path="/" element={<Store />} />
+                <Route exact path="/" element={<Store />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
                 <Route path="/settings" element={<PrivateRoute><UpdateProfile /></PrivateRoute>}/>
