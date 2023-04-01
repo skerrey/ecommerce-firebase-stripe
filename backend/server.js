@@ -10,8 +10,7 @@ const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
 const app = express();
   
 app.use(cors());
-// app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static("public"));
 app.use(express.json());
 
 const calculateOrderAmount = (items) => {
@@ -38,11 +37,6 @@ app.post("/create-payment-intent", async (req, res) => {
   res.send({
     clientSecret: paymentIntent.client_secret,
   });
-});
-
-// Serve index.html for all routes
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(4000, () => console.log("Server started on port 4000"));
