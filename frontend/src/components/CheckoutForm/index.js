@@ -96,7 +96,7 @@ export default function CheckoutForm() {
   }
 
   return (
-    <form id="payment-form" className="mb-4 pb-5 checkout-form-text" onSubmit={handleSubmit}>
+    <form id="payment-form" className="checkout-form" onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input type="text" id="name" className="form-control" value={userName} onChange={(e) => setName(e.target.value)} required />
