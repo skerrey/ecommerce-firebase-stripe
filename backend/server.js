@@ -10,8 +10,15 @@ const stripe = require("stripe")(process.env.REACT_APP_STRIPE_SECRET_KEY);
 const app = express();
   
 app.use(cors());
-app.use(express.static("public"));
+// app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Routes
+app.get("/api", (req, res) => {
+  res.send("Hello from server.js");
+});
 
 const calculateOrderAmount = (items) => {
   console.log(`Item total: ${items}`);
@@ -40,7 +47,7 @@ app.post("/create-payment-intent", async (req, res) => {
 });
 
 // Serve index.html for all routes
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
