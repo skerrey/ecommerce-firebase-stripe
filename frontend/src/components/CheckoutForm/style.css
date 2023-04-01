@@ -1,8 +1,9 @@
 /* Description: Styling for the Checkout Form component - Stripe */
 
-.checkout-form-text {
+.checkout-form {
   color: #5f606a;
   font-size: .93rem;
+  padding-bottom: 80px;
 }
 
 .checkout-form-btn-custom {
