@@ -19,10 +19,9 @@ import Success from "./components/Success/index";
 function App() {
   return (
     <>
-            <Router>
       <AuthProvider>
       <CartProvider>
-
+        <Router>
 
           <Navigation />
           <Container>
@@ -38,11 +37,10 @@ function App() {
             </Routes>
           </Container>
           <Footer />
-
+        </Router>
 
       </CartProvider>
       </AuthProvider>
-      </Router>
     </>
   );
 }
