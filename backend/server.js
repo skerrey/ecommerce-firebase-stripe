@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, '/frontend/build')));
 
 
 
@@ -47,7 +47,7 @@ app.post("/create-payment-intent", async (req, res) => {
 
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
-  res.sendFile(path.join(__dirname + '../frontend/build/index.html'));
+  res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
 });
 
 
