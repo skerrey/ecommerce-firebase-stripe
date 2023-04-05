@@ -46,9 +46,9 @@ app.post("/create-payment-intent", async (req, res) => {
 });
 
 // Handles any requests that don't match the ones above
-app.get('*', (req, res) =>{
-  res.sendFile(path.join(__dirname + './../public/index.html'));
-});
+// app.get('*', (req, res) =>{
+//   res.sendFile(path.join(__dirname + './../public/index.html'));
+// });
 
 
 app.listen(4000, () => console.log("Server started on port 4000"));
