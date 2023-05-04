@@ -37,20 +37,20 @@ describe('Cart', () => {
     jest.clearAllMocks();
   });
 
-  it('should render the product title', () => {
+  test('render the product title', () => {
     render(<Cart id={productData.id} quantity={2} />, { wrapper: ({ children }) => <CartContext.Provider value={cart}>{children}</CartContext.Provider> });
     const titleElement = screen.getByText("Coffee");
     expect(titleElement).toBeInTheDocument();
   });
 
-  it('should render the product price', () => {
+  test('render the product price', () => {
     render(<Cart id={productData.id} quantity={2} />, { wrapper: ({ children }) => <CartContext.Provider value={cart}>{children}</CartContext.Provider> });
 
     const priceElement = screen.getByText(`$${productData.price}`);
     expect(priceElement).toBeInTheDocument();
   });
 
-  it('should render the product image', () => {
+  test('render the product image', () => {
     render(<Cart id={productData.id} quantity={2} />, { wrapper: ({ children }) => <CartContext.Provider value={cart}>{children}</CartContext.Provider> });
 
     const imageElement = screen.getByAltText(productData.imageAlt);
@@ -58,14 +58,14 @@ describe('Cart', () => {
     expect(imageElement).toHaveAttribute('src', productData.image);
   });
 
-  it('should render the quantity', () => {
+  test('render the quantity', () => {
     render(<Cart id={productData.id} quantity={2} />, { wrapper: ({ children }) => <CartContext.Provider value={cart}>{children}</CartContext.Provider> });
 
     const quantityElement = screen.getByText('2');
     expect(quantityElement).toBeInTheDocument();
   });
 
-  it('should call addOneToCart when the "+" button is clicked', () => {
+  test('should call addOneToCart when the "+" button is clicked', () => {
     render(<Cart id={productData.id} quantity={2} />, { wrapper: ({ children }) => <CartContext.Provider value={cart}>{children}</CartContext.Provider> });
 
     const addButton = screen.getByLabelText('add one to cart');
@@ -73,7 +73,7 @@ describe('Cart', () => {
     expect(cart.addOneToCart).toHaveBeenCalledWith(productData.id);
   });
 
-  it('should call removeOneFromCart when the "-" button is clicked and quantity is greater than 1', () => {
+  test('should call removeOneFromCart when the "-" button is clicked and quantity is greater than 1', () => {
     render(<Cart id={productData.id} quantity={2} />, { wrapper: ({ children }) => <CartContext.Provider value={cart}>{children}</CartContext.Provider> });
 
     const removeButton = screen.getByLabelText('remove one from cart');
@@ -81,7 +81,7 @@ describe('Cart', () => {
     expect(cart.removeOneFromCart).toHaveBeenCalledWith(productData.id);
   });
 
-  it('should call deleteFromCart when the "delete from cart" button is clicked and quantity is 1', () => {
+  test('should call deleteFromCart when the "delete from cart" button is clicked and quantity is 1', () => {
     render(<Cart id={productData.id} quantity={1} />, { wrapper: ({ children }) => <CartContext.Provider value={cart}>{children}</CartContext.Provider> });
 
     const deleteButton = screen.getByLabelText('delete from cart');
