@@ -39,7 +39,7 @@ export default function ForgotPassword() {
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
+              <Form.Control aria-labelledby="email" type="email" ref={emailRef} required />
             </Form.Group>
             <Button disabled={loading} className="w-100 mt-3" type="submit">
               Reset Password
