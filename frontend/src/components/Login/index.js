@@ -39,11 +39,11 @@ export default function Login() {
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" autoComplete="email" ref={emailRef} required />
+              <Form.Control aria-labelledby="email" type="email" autoComplete="email" ref={emailRef} required />
             </Form.Group>
             <Form.Group id="password" className="my-2">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" autoComplete="current-password" ref={passwordRef} required />
+              <Form.Control aria-labelledby="password" type="password" autoComplete="current-password" ref={passwordRef} required />
             </Form.Group>
             <Button disabled={loading} className="w-100 mt-3" type="submit">
               Log In
