@@ -3,7 +3,6 @@
 import Cart from './index';
 import { render, screen, fireEvent } from '@testing-library/react';
 import "@testing-library/jest-dom";
-import userEvent from '@testing-library/user-event';
 
 import { CartContext } from '../../contexts/CartContext';
 import { getProductData } from '../../productStore';
