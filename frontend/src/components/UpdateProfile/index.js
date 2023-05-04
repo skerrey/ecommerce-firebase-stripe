@@ -71,23 +71,23 @@ export default function UpdateProfile() {
           <Form onSubmit={handleSubmit}>
             <Form.Group id="first-name">
               <Form.Label>First Name</Form.Label>
-              <Form.Control type="text" autoComplete="first-name" ref={firstNameRef} required defaultValue={nameArr[0]} />
+              <Form.Control aria-labelledby="first-name" type="text" autoComplete="first-name" ref={firstNameRef} required defaultValue={nameArr[0]} />
             </Form.Group>
             <Form.Group id="last-name">
               <Form.Label>Last Name</Form.Label>
-              <Form.Control type="text" autoComplete="family-name" ref={lastNameRef} required defaultValue={nameArr[1]} />
+              <Form.Control aria-labelledby="last-name" type="text" autoComplete="family-name" ref={lastNameRef} required defaultValue={nameArr[1]} />
             </Form.Group>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" autoComplete="email"  ref={emailRef} required defaultValue={currentUser.email}/>
+              <Form.Control aria-labelledby="email" type="email" autoComplete="email"  ref={emailRef} required defaultValue={currentUser.email}/>
             </Form.Group>
             <Form.Group id="password" className="my-2">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password"  autoComplete="new-password" ref={passwordRef} placeholder='Leave blank to keep the same' />
+              <Form.Control aria-labelledby="password" type="password"  autoComplete="new-password" ref={passwordRef} placeholder='Leave blank to keep the same' />
             </Form.Group>
             <Form.Group id="password-confirm">
               <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" autoComplete="new-password" ref={passwordConfirmRef} placeholder='Leave blank to keep the same' />
+              <Form.Control aria-labelledby="password-confirm" type="password" autoComplete="new-password" ref={passwordConfirmRef} placeholder='Leave blank to keep the same' />
             </Form.Group>
             <Button disabled={loading} className="w-100 mt-3" type="submit">
               Update
