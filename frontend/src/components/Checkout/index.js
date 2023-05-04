@@ -57,7 +57,7 @@ function Checkout() {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the modal loads
-    fetch("http://localhost:4000/create-payment-intent", {
+    fetch("https://coffee-hut-backend.onrender.com/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items: cart.getTotalCost().toFixed(2) }),
