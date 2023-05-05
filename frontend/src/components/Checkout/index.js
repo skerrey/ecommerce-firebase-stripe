@@ -81,12 +81,12 @@ function Checkout() {
           <h4 className="pt-3">Items in your cart:</h4>
           <div className="checkout-scroll-arrow">
             {arrowDirection === 'down' ? ( // Check if arrow should be up or down
-                <AiOutlineDownCircle size={32} onClick={scrollToBottom} />
+                <AiOutlineDownCircle data-testid="down-arrow" size={32} onClick={scrollToBottom} />
             ) : (
-              <AiOutlineUpCircle size={32} onClick={scrollToTop} />
+              <AiOutlineUpCircle data-testid="up-arrow" size={32} onClick={scrollToTop} />
             )}
           </div>
-          <div className="checkout-products" style={{ height: 
+          <div data-testid="checkout-products" className="checkout-products" style={{ height: 
           isMobile() ? "100%" : "calc(100vh - 200px)" }}>
 
             <div xs={1} className="g-0">
@@ -100,7 +100,7 @@ function Checkout() {
         <Col>
           <div className="checkout-form">
             <h2>Total: ${cart.getTotalCost().toFixed(2)}</h2>
-            {!currentUser ? <div className="pb-3 fst-italic">Checkout out guest? <Link to="/login" className="fst-normal">Login</Link></div> : null}
+            {!currentUser ? <div className="pb-3 fst-italic">Checkout as guest? <Link to="/login" className="fst-normal">Login</Link></div> : null}
             {clientSecret && (
               <Elements key={clientSecret} options={options} stripe={stripePromise}>
                 <CheckoutForm />
