@@ -99,7 +99,7 @@ export default function CheckoutForm() {
     <form id="payment-form" className="checkout-form" onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" className="form-control" value={userName} onChange={(e) => setName(e.target.value)} required />
+        <input type="text" id="name" className="form-control" defaultValue={userName} onChange={(e) => setName(e.target.value)} required />
       </div>
 
       <LinkAuthenticationElement
