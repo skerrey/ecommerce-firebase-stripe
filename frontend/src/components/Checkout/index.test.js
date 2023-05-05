@@ -3,6 +3,7 @@
 import Checkout from './index';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+
 import { CartContext } from '../../contexts/CartContext';
 import { AuthContext } from '../../contexts/AuthContext';
 
